@@ -70,11 +70,61 @@ http://localhost:1992/
 ###### 创建角色
 ![create_role](https://github.com/croonyy/corona/blob/main/static/images/create_role.png)
 
-#### 使用说明
+#### 项目结构
+```shell
+├── apps  # app目录，推荐一个app创建一个文件夹,可参考源码样例，也可自行组织app代码结构
+  ├── app1  # 样例app
+    ├── ...
+  ├── udadmin  # admin应用
+    ├── ...
+├── config
+  ├── settings.py  # 项目配置文件
+├── db
+  ├── db.sqlite3  # 默认数据库为sqlite3，此为数据库文件
+  ├── init
+├── front  # 前端根目录
+  ├── ...
+├── migrations  # 数据库迁移文件，如若更换数据库，需要重新生成
+  ├── app1  # 一个app会生成一个文件夹
+  ├── udadmin
+├── notes  # 笔记
+  ├── ...
+├── static  # 静态文件
+  ├── docs-ui  # 为了swagger文档从本地加载，文件本地化
+  ├── images  # 项目展示图片
+  ├── favicon.ico
+├── test  # 测试代码
+  ├── ...
+├── tools  # 工具代码
+  ├── __pycache__
+  ├── locate_print.py
+  ├── objdoc.py
+  ├── timer.py
+├── .gitignore
+├── cert.pem
+├── init_data.py  # 初始化数据库的用户和权限的脚本
+├── key.pem
+├── main.py
+├── pyproject.toml
+├── README.en.md
+├── README.md
+├── requirements.txt  # python环境依赖
+├── run.py  # 主入口，python run.py 启动项目
+├── vscode_extensions.txt  # vscode 插件
+```
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+
+#### 使用说明 （请按步骤参考样例app1，熟悉步骤之后可删除app1目录，并创建自己的app）
+
+1.  创建app1目录
+2.  创建app1/app.py,定义app路由实例
+3.  创建app1/models.py
+4.  在app1/models.py里面定义模型
+5.  创建app1/ui.py，定义前端模型显示配置
+6.  在app1/app.py注册模型和ui
+7.  如果需要开发其他api，可创建view文件夹（推荐），或者自行组织文件结构书写代码
+
+##### 上述步骤结束后，前端会自动生成模型的增删改查页面，管理员可直接看到，其他用户需要定义权限并赋权才看得到，权限格式参考admin应用已有的模型权限
 
 #### 参与贡献
 
@@ -82,13 +132,3 @@ http://localhost:1992/
 2.  新建 Feat_xxx 分支
 3.  提交代码
 4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
