@@ -28,6 +28,9 @@ pnpm install
 # 初始化数据库
 aerich upgrade
 
+#执行脚本，创建admin用户（密码可后续自行更改），和模型权限
+python init_data.py
+
 ```
 ### 运行
 ```bash
