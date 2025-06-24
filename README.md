@@ -54,9 +54,21 @@ http://localhost:3014/udadmin/docs
 http://localhost:1992/
 ```
 
-#### 项目展示
-
+#### 项目图片展示
+###### 接口文档
 ![api_doc](https://github.com/croonyy/corona/blob/main/static/images/api_doc.png)
+###### 控制台
+![console](https://github.com/croonyy/corona/blob/main/static/images/console.png)
+###### 用户列表
+![user](https://github.com/croonyy/corona/blob/main/static/images/user.png)
+###### 编辑用户
+![edit_user](https://github.com/croonyy/corona/blob/main/static/images/edit_user.png)
+###### 权限实例
+![permission](https://github.com/croonyy/corona/blob/main/static/images/permission.png)
+###### 编辑权限
+![edit_permission](https://github.com/croonyy/corona/blob/main/static/images/edit_permission.png)
+###### 创建角色
+![create_role](https://github.com/croonyy/corona/blob/main/static/images/create_role.png)
 
 #### 使用说明
 
