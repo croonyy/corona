@@ -1,0 +1,2 @@
+msgid "password for user[{username}] is incorrect."
+msgstr "password for user[{username}] is incorrect."
