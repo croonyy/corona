@@ -79,7 +79,7 @@ async def get_user(Authorization: Annotated[str, Depends(HTTPBearer())]):
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail=f"user:{user_info["username"]} not exists in db",
+            detail=f"user:{user_info['username']} not exists in db",
             headers={"WWW-Authenticate": "Bearer"},
         )
     if user.is_delete:

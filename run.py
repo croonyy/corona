@@ -5,6 +5,10 @@ from uvicorn.lifespan.on import LifespanOn
 import click
 import sys
 
+# import subprocess
+# import os
+import multiprocessing
+
 # from tools.locate_print import locate_print
 # locate_print("'udadmin:user'")
 
@@ -31,9 +35,24 @@ class UdLifespanOn(LifespanOn):
 
 sys.modules["uvicorn.lifespan.on"].LifespanOn = UdLifespanOn
 
+
+def run_server():
+    uvicorn.run("main:app", host="localhost", port=3014, reload=True)
+
 # 启动应用
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="localhost", port=3014, reload=True)
-    # uvicorn.run("main:app", host="localhost", port=3014)
-    # uvicorn.run("main:app", host="localhost", port=1008)
+    # uvicorn.run("main:app", host="localhost", port=3014, reload=True) # ctrl+c 终止的时候  reloader有时候异常导致不能正常退出，导致服务不能终止
+    # 使用子进程来启动服务
+    server_process = multiprocessing.Process(target=run_server) # 创建子进程绑定uvicorn服务入口
+    server_process.start() # 启动子进程
+    print(f"server PID: {server_process.pid}") # 可读取子进程的pid，可用于后续根据进程id做某些操作
+    
+    try:
+        server_process.join()  # 阻塞主线程，直到子进程结束
+    except KeyboardInterrupt:
+        print("terminate server...")
+        server_process.terminate()  # 发送子进程 SIGTERM(终止信号)
+        server_process.join()
+        print("terminate success")
+
     

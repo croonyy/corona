@@ -1,6 +1,6 @@
 import sys
-sys.path.append('D:\\project\\fastapi_projects\\corona')
-sys.path.append('D:\\workspace\\fastapi\\corona')
+sys.path.append('D:\\project\\fastapi_projects\\cameo')
+sys.path.append('D:\\workspace\\fastapi\\cameo')
 
 from apps.udadmin.utils import monkey_patching
 

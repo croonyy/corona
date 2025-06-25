@@ -2,10 +2,10 @@ from . import udtools as ut
 
 tips = (
     "<br>Tips:  \n"
-    f"  1. {ut.font("#",color='#ff0000')}(primary_key), "
-    f"{ut.font("\\*",color='#ff0000')}(required),"
-    f"{ut.font("❶",color='#ff0000')}(read_olny),"
-    f"{ut.font("❷",color='#ff0000')}(has_db_field),  \n"
+    f"  1. {ut.font('#',color='#ff0000')}(primary_key), "
+    f"{ut.font('*',color='#ff0000')}(required),"
+    f"{ut.font('❶',color='#ff0000')}(read_olny),"
+    f"{ut.font('❷',color='#ff0000')}(has_db_field),  \n"
     "  2. [{{pk_tag}}{{required_tag}}{{read_only_tag}}{{db_field_tag}}]"
     "{{__field_name__}}({{__ud_name__}}) "
     "_&lt;{{field_type}}({{sql_type}})&gt;_ __:__ "

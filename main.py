@@ -16,7 +16,7 @@ import time
 from fastapi.middleware.cors import CORSMiddleware
 from apps.udadmin.utils.decorator import timer
 from fastapi.logger import logger
-
+import asyncio
 
 # 上下文管理loggingartup执行yield之前的代码，shutdown执行yield以下的代码
 @asynccontextmanager
@@ -39,8 +39,12 @@ async def lifespan(app: FastAPI):
     print(f"registered models:\n{list(mr.models_info.keys())}")
 
     yield
-    # 销毁fastapi实例后断开数据库连接
-    await Tortoise.close_connections()
+    try:
+        # 销毁fastapi实例后断开数据库连接
+        await Tortoise.close_connections()
+    except Exception as e:
+        print("="*80)
+        print(e)
 
 
 app = FastAPI(
@@ -53,6 +57,7 @@ app = FastAPI(
     redoc_url="/redoc",
     debug=True,
 )
+
 
 # 挂载静态文件
 app.mount("/static", StaticFiles(directory="static", html=True), name="static")

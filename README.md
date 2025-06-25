@@ -1,11 +1,21 @@
-# Corona
+# Cameo
+<p align="center">
+  <a href="#"><img src="static/images/account-logo.png" alt="FastAPI"></a>
+</p>
+
 
 #### 介绍
-Corona 是一个开源项目，用于帮助开发者快速搭建fastapi项目,并且自带了一个admin应用（前后端分离），参考django-admin设计，使用tortoise-orm作为数据库操作框架，支持多种数据库，支持mysql,sqlite,postgresql,等数据库。实现RBAC权限管理模式。
+cameo是一个开源项目(fastapi-admin/fastapiadmin/fastapi_admin)，用于帮助开发者快速搭建fastapi项目,并且自带了一个admin应用（前后端分离,前端使用vue3的开源框架naive-ui-admin），参考django-admin设计，使用tortoise-orm作为数据库操作框架，支持mysql,sqlite,postgresql等多种数据库，实现RBAC权限管理模式，增删改查api自动生成。
 
-#### 软件架构
-python3.13,Tortoise-orm
+#### 项目地址
+- [__github__ https://github.com/croonyy/cameo](https://github.com/croonyy/cameo)
+- [__gitee__ https://gitee.com/croonyy/cameo](https://gitee.com/croonyy/cameo)
 
+#### 版本依赖
+- __python__ --version:3.13.0
+- __vue3__ 
+- __Node__ -v:v22.14.0
+- __npm__ -version:10.9.2
 
 #### 安装教程
 
@@ -14,61 +24,60 @@ python3.13,Tortoise-orm
 # 事先安装python3.13
 
 # 克隆源码
-git clone https://github.com/
+git clone https://gitee.com/croonyy/cameo.git
 
-# 进入到项目目录
+# 进入到项目目录 cd cameo
 # 安装python环境依赖,如果依赖下载慢，请自行更换pip镜像源
 pip install -r requirements.txt
+# 初始化数据库
+aerich upgrade
+#执行脚本，创建admin用户（密码可后续自行更改），和模型权限
+python init_data.py
 
 # 前端安装
 # 进入到/front目录
 cd front
 pnpm install
 
-# 初始化数据库
-aerich upgrade
-
-#执行脚本，创建admin用户（密码可后续自行更改），和模型权限
-python init_data.py
 
 ```
-### 运行
+#### 运行
 ```bash
-# 1、运行后端
-# 请先激活虚拟环境 conda activate [python_env_name]
-# 进入到项目目录下,如果是python虚拟环境，
+# 1、运行后端服务
+# 如果是python虚拟环境，请先激活虚拟环境 conda activate [python_env_name]
+# 进入到项目目录下，执行
 python run.py
 
-
-# 2、运行前端
+# 2、运行前端服务
 # 进入到前端目录下
 cd front
 pnpm run dev
 
-
 # 3、访问
 # 访问后端接口文档
 http://localhost:3014/udadmin/docs
-
 # 访问前端页面
 http://localhost:1992/
+# 登录账号/密码,预置两个用户，一个管理员和一个普通用户，可自行编辑用户修改密码
+admin/admin
+test_user/123456
 ```
 
 #### 项目图片展示
 ###### 接口文档
-![api_doc](https://github.com/croonyy/corona/blob/main/static/images/api_doc.png)
+![api_doc](static/images/api_doc.png)
 ###### 控制台
-![console](https://github.com/croonyy/corona/blob/main/static/images/console.png)
+![console](static/images/console.png)
 ###### 用户列表
-![user](https://github.com/croonyy/corona/blob/main/static/images/user.png)
+![user](static/images/user.png)
 ###### 编辑用户
-![edit_user](https://github.com/croonyy/corona/blob/main/static/images/edit_user.png)
+![edit_user](static/images/edit_user.png)
 ###### 权限实例
-![permission](https://github.com/croonyy/corona/blob/main/static/images/permission.png)
+![permission](static/images/permission.png)
 ###### 编辑权限
-![edit_permission](https://github.com/croonyy/corona/blob/main/static/images/edit_permission.png)
+![edit_permission](static/images/edit_permission.png)
 ###### 创建角色
-![create_role](https://github.com/croonyy/corona/blob/main/static/images/create_role.png)
+![create_role](static/images/create_role.png)
 
 #### 项目结构
 ```shell
@@ -96,7 +105,6 @@ http://localhost:1992/
 ├── test  # 测试代码
   ├── ...
 ├── tools  # 工具代码
-  ├── __pycache__
   ├── locate_print.py
   ├── objdoc.py
   ├── timer.py
@@ -124,7 +132,7 @@ http://localhost:1992/
 6.  在app1/app.py注册模型和ui
 7.  如果需要开发其他api，可创建view文件夹（推荐），或者自行组织文件结构书写代码
 
-##### 上述步骤结束后，前端会自动生成模型的增删改查页面，管理员可直接看到，其他用户需要定义权限并赋权才看得到，权限格式参考admin应用已有的模型权限
+###### 上述步骤结束后，前端会自动生成模型的增删改查页面，管理员可直接看到，其他用户需要定义权限并赋权才看得到，权限格式参考admin应用已有的模型权限
 
 #### 参与贡献
 

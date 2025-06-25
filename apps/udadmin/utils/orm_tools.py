@@ -15,7 +15,7 @@ def build_Q_filter(filters, model):
         c = condition
         if c["field"] not in valid_fields:
             raise Exception(
-                f"filter field[{c["field"]}] not in model[{model.__name__}]"
+                f"filter field[{c['field']}] not in model[{model.__name__}]"
             )
         value = c["value"]
         symbol = c["symbol"]
@@ -36,9 +36,9 @@ def build_Q_filter(filters, model):
             "range",
             "not",  # 不等于
         ]:
-            return Q(**{f"{c["field"]}__{symbol}": value})
+            return Q(**{f"{c['field']}__{symbol}": value})
         elif symbol == "eq":
-            return Q(**{f"{c["field"]}": value})
+            return Q(**{f"{c['field']}": value})
         else:
             raise Exception(f"symbol error:[{symbol}] not configured.")
 
@@ -145,7 +145,7 @@ async def get_relation_objs(
 def get_body_class(model):
     fields = model._meta.fetch_fields
     class_prefix = (
-        f"{(model._meta.app or "").capitalize()}{model.__name__.capitalize()}"
+        f"{(model._meta.app or '').capitalize()}{model.__name__.capitalize()}"
     )
     enum_dict = {i: i for i in fields}
     f_enum_cls_name = f"{class_prefix}M2mFieldEnum"

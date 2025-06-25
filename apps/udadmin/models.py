@@ -55,7 +55,7 @@ class User(DtBase):
     # username = fields.CharField(max_length=255, unique=True, ud_name='aaa')
     password = fields.CharField(
         max_length=255,
-        description="密码",
+        description="明文输入密码，保存后变成密文。",
         ud_name="密码",
         ud_order=3,
     )
